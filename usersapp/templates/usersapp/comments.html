@@ -1,0 +1,25 @@
+{% extends 'usersapp/base.html' %}
+
+
+{% block title %}
+    Мои отклики
+{% endblock %}
+
+
+{% block content %}
+    <h3>Все отклики</h3>
+    <hr>
+    {% if comments %}
+        {% for com in comments %}
+            <ul>
+                <li>Объявление: {{ com.post.title }}</li>
+                <li>Описание: {{ com.text }}</li>
+                <li>Подтвержден: {{ com.status }}</li>
+                <li>Дата создания: {{ com.post.created }}</li>
+                <li>Откликнулся - <strong>{{ com.post.author }}</strong></li>
+            </ul>
+        {% endfor %}
+    {% else %}
+        <h3>Откликов нет</h3>
+    {% endif %}
+{% endblock %}
